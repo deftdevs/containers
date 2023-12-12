@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Find changed images
+        id: changes
+        run: |
+          {
+            echo 'images<<EOF'
+            .github/scripts/changes.sh
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Build images with changes
+        if: steps.changes.outputs.images != ''
+        run: |
+          .github/scripts/build.sh '${{ steps.changes.outputs.images }}'
