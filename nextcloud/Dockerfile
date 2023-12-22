@@ -1,4 +1,4 @@
-FROM nextcloud:28.0.0-apache
+FROM nextcloud:28.0.1-apache
 
 LABEL org.opencontainers.image.source https://github.com/deftdevs/containers
 
