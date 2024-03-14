@@ -1,7 +1,7 @@
 ARG TERRAGRUNT_VERSION=0.52.7
 ARG AZ_VERSION=2.51.0
 
-FROM hashicorp/terraform:1.5.5
+FROM hashicorp/terraform:1.7.5
 
 LABEL org.opencontainers.image.source https://github.com/deftdevs/containers
 ## Set label with node path for Azure DevOps Pipelines
