@@ -18,7 +18,7 @@ for dockerfile in $dockerfiles; do
     fi
 
     ## Determine whether there have been changes since the last tag and print the directory name if so.
-    if [ -n "$(git diff --name-only "$tag..HEAD" "$dockerfile/Dockerfile")" ]; then
+    if git diff --name-only --patch "$tag..HEAD" -- "$dockerfile" | grep -q Dockerfile; then
         echo "$dockerfile"
     fi
 done
