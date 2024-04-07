@@ -1,7 +1,7 @@
 ARG TERRAGRUNT_VERSION=0.52.7
 ARG AZ_VERSION=2.51.0
 
-FROM hashicorp/terraform:1.5.5
+FROM ghcr.io/opentofu/opentofu:1.6.2
 
 LABEL org.opencontainers.image.source https://github.com/deftdevs/containers
 ## Set label with node path for Azure DevOps Pipelines
@@ -9,7 +9,7 @@ LABEL com.azure.dev.pipelines.agent.handler.node.path /usr/bin/node
 
 ## Create a user and group
 
-ARG USER="terraform"
+ARG USER="opentofu"
 ARG UID="1000"
 ARG GROUP="${USER}"
 ARG GID="${UID}"
