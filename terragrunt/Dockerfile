@@ -1,7 +1,7 @@
 ARG TERRAGRUNT_VERSION=0.52.7
 ARG AZ_VERSION=2.51.0
 
-FROM ghcr.io/opentofu/opentofu:1.7.0
+FROM ghcr.io/opentofu/opentofu:1.7.1
 
 LABEL org.opencontainers.image.source https://github.com/deftdevs/containers
 ## Set label with node path for Azure DevOps Pipelines
