@@ -24,7 +24,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ## Install PIP packages
-ARG AZ_VERSION=2.59.0
+ARG AZ_VERSION=2.63.0
 RUN pip3 install -Iv azure-cli==${AZ_VERSION}
 
 RUN pip3 install yq
