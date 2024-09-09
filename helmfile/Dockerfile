@@ -33,6 +33,7 @@ RUN VERSION_ID=$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2) && \
 RUN apt-get update && \
     apt-get --no-install-recommends --yes install \
         podman \
+        uidmap \
         && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
