@@ -23,21 +23,6 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-## Prepare installing Podman
-RUN VERSION_ID=$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2) && \
-    echo "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /" \
-        > /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list && \
-    wget -nv "https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_${VERSION_ID}/Release.key" -O- | apt-key add -
-
-## Install Podman
-RUN apt-get update && \
-    apt-get --no-install-recommends --yes install \
-        podman \
-        uidmap \
-        && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
 ## Install PIP packages
 ARG AZ_VERSION=2.63.0
 RUN pip3 install -Iv azure-cli==${AZ_VERSION}
