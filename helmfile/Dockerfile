@@ -1,4 +1,4 @@
-FROM ghcr.io/helmfile/helmfile-ubuntu:v0.167.1
+FROM ghcr.io/helmfile/helmfile-ubuntu:v0.168.0
 
 LABEL org.opencontainers.image.source https://github.com/deftdevs/containers
 
