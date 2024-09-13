@@ -13,16 +13,16 @@ See https://docs.github.com/en/actions/creating-actions/dockerfile-support-for-g
 
 This Docker image contains the following primary binaries:
 
-* [`az`](https://pypi.org/project/azure-cli/) (Azure CLI)
-* `git`
 * [`helm`](https://github.com/helm/helm/releases)
 * [`helmfile`](https://github.com/roboll/helmfile/releases)
 * [`kubectl`](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG) (Kubernetes client)
 
 Besides it contains the following secondary binaries:
 
-* [`az`]
-* [`psql`]
+* [`az`](https://pypi.org/project/azure-cli/) (Azure CLI)
+* `git`
+* `podman`
+* `psql`
 
 ## Example:
 
