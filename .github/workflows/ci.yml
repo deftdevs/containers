@@ -109,3 +109,12 @@ jobs:
       - name: Inspect image
         run: |
           docker image inspect ghcr.io/${{ github.repository_owner }}/${{ matrix.image }}:${{ matrix.version }}
+
+  ## This job is used to aggregate the result of the 'build' matrix job.
+  ## There doesn't seem to be another way to have status checks based on "dynamic" matrix jobs.
+  build_success:
+    needs: [ build ]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Build success
+        run: echo "Build success"
