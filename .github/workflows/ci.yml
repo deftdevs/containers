@@ -112,9 +112,17 @@ jobs:
 
   ## This job is used to aggregate the result of the 'build' matrix job.
   ## There doesn't seem to be another way to have status checks based on "dynamic" matrix jobs.
-  build_success:
+  build_status:
     needs: [ build ]
     runs-on: ubuntu-24.04
+    if: always()
     steps:
-      - name: Build success
-        run: echo "Build success"
+      - name: Build status
+        run: |
+          if [[ "${{ needs.build.result }}" == "success" ]]; then
+            echo "All build jobs succeeded"
+            exit 0
+          else
+            echo "One or more build jobs failed"
+            exit 1
+          fi
