@@ -28,13 +28,14 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ## Download and install the Microsoft signing key and add the Azure CLI software repository
+## TODO: Suites should be switched back to `$(lsb_release -cs)` later
 RUN mkdir -p /etc/apt/keyrings && \
     curl -sLS https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/keyrings/microsoft.gpg > /dev/null && \
     chmod go+r /etc/apt/keyrings/microsoft.gpg && \
     tee /etc/apt/sources.list.d/azure-cli.sources <<EOF
 Types: deb
 URIs: https://packages.microsoft.com/repos/azure-cli/
-Suites: $(lsb_release -cs)
+Suites: noble
 Components: main
 Architectures: $(dpkg --print-architecture)
 Signed-by: /etc/apt/keyrings/microsoft.gpg
